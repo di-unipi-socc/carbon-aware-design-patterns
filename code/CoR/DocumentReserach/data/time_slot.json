@@ -1,0 +1,93 @@
+{
+    "data":[
+    {
+    "from": "08:00",
+    "to": "08:30",
+    "intensity": {
+        "forecast": 195,
+        "actual": 230,
+        "index": "high"
+    }
+    },
+    {
+    "from": "08:30",
+    "to": "09:00",
+    "intensity": {
+        "forecast": 240,
+        "actual": 210,
+        "index": "high"
+    }
+    },
+    {
+    "from": "09:00",
+    "to": "09:30",
+    "intensity": {
+        "forecast": 198,
+        "actual": 270,
+        "index": "very high"
+    }
+    },
+    {
+    "from": "09:30",
+    "to": "10:00",
+    "intensity": {
+        "forecast": 180,
+        "actual": 190,
+        "index": "moderate"
+    }
+    },
+    {
+    "from": "10:00",
+    "to": "10:30",
+    "intensity": {
+        "forecast": 145,
+        "actual": 175,
+        "index": "moderate"
+    }
+    },
+    {
+    "from": "10:30",
+    "to": "11:00",
+    "intensity": {
+        "forecast": 140,
+        "actual": 130,
+        "index": "low"
+    }
+    },
+    {
+    "from": "11:00",
+    "to": "11:30",
+    "intensity": {
+        "forecast": 135,
+        "actual": 145,
+        "index": "low"
+    }
+    },
+    {
+    "from": "11:30",
+    "to": "12:00",
+    "intensity": {
+        "forecast": 170,
+        "actual": 160,
+        "index": "moderate"
+    }
+    },
+    {
+    "from": "12:00",
+    "to": "12:30",
+    "intensity": {
+        "forecast": 260,
+        "actual": 250,
+        "index": "very high"
+    }
+    },
+    {
+    "from": "12:30",
+    "to": "13:00",
+    "intensity": {
+        "forecast": 246,
+        "actual": 310,
+        "index": "very high"
+    }
+    }]
+}

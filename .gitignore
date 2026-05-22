@@ -1,0 +1,34 @@
+# =========================
+# Ambienti Virtuali
+# =========================
+venv/
+.venv/
+env/
+
+# =========================
+# File di sistema Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# =========================
+# Editor e Sistemi Operativi
+# =========================
+.vscode/
+.DS_Store
+Thumbs.db
+
+# =========================
+# Dati e Risultati (Opzionale)
+# =========================
+# caricarli su GitHub, decommenta (togli il #) le due righe seguenti:
+# results/*
+# !results/.gitkeep
+
+# Se non vuoi caricare i libri o i dataset originali su GitHub per motivi di 
+# copyright o spazio, decommenta queste righe:
+# code/CoR/DocumentReserach/data/books/*
+# !code/CoR/DocumentReserach/data/books/.gitkeep

@@ -1,0 +1,96 @@
+time_slot;forecast_time;actual_ci;forecast_ci;book_name;author;tipo
+08:00;08:30;230;195;Il Signore degli Anelli;J.R.R. Tolkien;corrente
+08:00;08:30;230;195;1984;George Orwell;corrente
+08:00;08:30;230;195;Il nome della rosa;Umberto Eco;corrente
+08:00;08:30;230;195;Cent'anni di solitudine;Gabriel García Márquez;corrente
+08:00;08:30;230;195;Orgoglio e pregiudizio;Jane Austen;corrente
+08:30;09:00;210;240;Delitto e castigo;Fëdor Dostoevskij;corrente
+08:30;09:00;210;240;Il cacciatore di aquiloni;Khaled Hosseini;corrente
+08:30;09:00;210;240;Se questo è un uomo;Primo Levi;corrente
+08:30;09:00;210;240;La metamorfosi;Franz Kafka;corrente
+08:30;09:00;210;240;Il ritratto di Dorian Gray;Oscar Wilde;corrente
+08:30;09:00;210;240;Il Signore degli Anelli;J.R.R. Tolkien;precedente
+08:30;09:00;210;240;1984;George Orwell;precedente
+08:30;09:00;210;240;Il nome della rosa;Umberto Eco;precedente
+08:30;09:00;210;240;Cent'anni di solitudine;Gabriel García Márquez;precedente
+08:30;09:00;210;240;Orgoglio e pregiudizio;Jane Austen;precedente
+09:00;09:30;270;198;Don Chisciotte della Mancia;Miguel de Cervantes;corrente
+09:00;09:30;270;198;Il barone rampante;Italo Calvino;corrente
+09:00;09:30;270;198;Harry Potter e la pietra filosofale;J.K. Rowling;corrente
+09:00;09:30;270;198;Fahrenheit 451;Ray Bradbury;corrente
+09:00;09:30;270;198;I promessi sposi;Alessandro Manzoni;corrente
+09:00;09:30;270;198;Delitto e castigo;Fëdor Dostoevskij;precedente
+09:00;09:30;270;198;Il cacciatore di aquiloni;Khaled Hosseini;precedente
+09:00;09:30;270;198;Se questo è un uomo;Primo Levi;precedente
+09:00;09:30;270;198;La metamorfosi;Franz Kafka;precedente
+09:00;09:30;270;198;Il ritratto di Dorian Gray;Oscar Wilde;precedente
+09:30;10:00;190;180;Il vecchio e il mare;Ernest Hemingway;corrente
+09:30;10:00;190;180;Guerra e pace;Lev Tolstoj;corrente
+09:30;10:00;190;180;Uno, nessuno e centomila;Luigi Pirandello;corrente
+09:30;10:00;190;180;L'ombra del vento;Carlos Ruiz Zafón;corrente
+09:30;10:00;190;180;Cime tempestose;Emily Brontë;corrente
+09:30;10:00;190;180;Don Chisciotte della Mancia;Miguel de Cervantes;precedente
+09:30;10:00;190;180;Il barone rampante;Italo Calvino;precedente
+09:30;10:00;190;180;Harry Potter e la pietra filosofale;J.K. Rowling;precedente
+09:30;10:00;190;180;Fahrenheit 451;Ray Bradbury;precedente
+09:30;10:00;190;180;I promessi sposi;Alessandro Manzoni;precedente
+10:00;10:30;175;145;Moby Dick;Herman Melville;corrente
+10:00;10:30;175;145;Il piccolo principe;Antoine de Saint-Exupéry;corrente
+10:00;10:30;175;145;Anna Karenina;Lev Tolstoj;corrente
+10:00;10:30;175;145;Lo straniero;Albert Camus;corrente
+10:00;10:30;175;145;I miserabili;Victor Hugo;corrente
+10:00;10:30;175;145;Il vecchio e il mare;Ernest Hemingway;precedente
+10:00;10:30;175;145;Guerra e pace;Lev Tolstoj;precedente
+10:00;10:30;175;145;Uno, nessuno e centomila;Luigi Pirandello;precedente
+10:00;10:30;175;145;L'ombra del vento;Carlos Ruiz Zafón;precedente
+10:00;10:30;175;145;Cime tempestose;Emily Brontë;precedente
+10:30;11:00;130;140;Alla ricerca del tempo perduto;Marcel Proust;corrente
+10:30;11:00;130;140;Il grande Gatsby;F. Scott Fitzgerald;corrente
+10:30;11:00;130;140;Madame Bovary;Gustave Flaubert;corrente
+10:30;11:00;130;140;Le avventure di Alice nel Paese delle Meraviglie;Lewis Carroll;corrente
+10:30;11:00;130;140;Il conte di Montecristo;Alexandre Dumas;corrente
+10:30;11:00;130;140;Moby Dick;Herman Melville;precedente
+10:30;11:00;130;140;Il piccolo principe;Antoine de Saint-Exupéry;precedente
+10:30;11:00;130;140;Anna Karenina;Lev Tolstoj;precedente
+10:30;11:00;130;140;Lo straniero;Albert Camus;precedente
+10:30;11:00;130;140;I miserabili;Victor Hugo;precedente
+11:00;11:30;145;135;Frankenstein;Mary Shelley;corrente
+11:00;11:30;145;135;Dracula;Bram Stoker;corrente
+11:00;11:30;145;135;I fratelli Karamazov;Fëdor Dostoevskij;corrente
+11:00;11:30;145;135;Il buio oltre la siepe;Harper Lee;corrente
+11:00;11:30;145;135;Jane Eyre;Charlotte Brontë;corrente
+11:00;11:30;145;135;Alla ricerca del tempo perduto;Marcel Proust;precedente
+11:00;11:30;145;135;Il grande Gatsby;F. Scott Fitzgerald;precedente
+11:00;11:30;145;135;Madame Bovary;Gustave Flaubert;precedente
+11:00;11:30;145;135;Le avventure di Alice nel Paese delle Meraviglie;Lewis Carroll;precedente
+11:00;11:30;145;135;Il conte di Montecristo;Alexandre Dumas;precedente
+11:30;12:00;160;170;I viaggi di Gulliver;Jonathan Swift;corrente
+11:30;12:00;160;170;Sulla strada;Jack Kerouac;corrente
+11:30;12:00;160;170;Il profumo;Patrick Süskind;corrente
+11:30;12:00;160;170;Cecità;José Saramago;corrente
+11:30;12:00;160;170;L'alchimista;Paulo Coelho;corrente
+11:30;12:00;160;170;Frankenstein;Mary Shelley;precedente
+11:30;12:00;160;170;Dracula;Bram Stoker;precedente
+11:30;12:00;160;170;I fratelli Karamazov;Fëdor Dostoevskij;precedente
+11:30;12:00;160;170;Il buio oltre la siepe;Harper Lee;precedente
+11:30;12:00;160;170;Jane Eyre;Charlotte Brontë;precedente
+12:00;12:30;250;260;La fattoria degli animali;George Orwell;corrente
+12:00;12:30;250;260;Il maestro e Margherita;Michail Bulgakov;corrente
+12:00;12:30;250;260;Siddharta;Hermann Hesse;corrente
+12:00;12:30;250;260;La coscienza di Zeno;Italo Svevo;corrente
+12:00;12:30;250;260;I dolori del giovane Werther;Johann Wolfgang von Goethe;corrente
+12:00;12:30;250;260;I viaggi di Gulliver;Jonathan Swift;precedente
+12:00;12:30;250;260;Sulla strada;Jack Kerouac;precedente
+12:00;12:30;250;260;Il profumo;Patrick Süskind;precedente
+12:00;12:30;250;260;Cecità;José Saramago;precedente
+12:00;12:30;250;260;L'alchimista;Paulo Coelho;precedente
+12:30;13:00;310;246;Il richiamo della foresta;Jack London;corrente
+12:30;13:00;310;246;Ventimila leghe sotto i mari;Jules Verne;corrente
+12:30;13:00;310;246;Memorie di una geisha;Arthur Golden;corrente
+12:30;13:00;310;246;Il fu Mattia Pascal;Luigi Pirandello;corrente
+12:30;13:00;310;246;Odissea;Omero;corrente
+12:30;13:00;310;246;La fattoria degli animali;George Orwell;precedente
+12:30;13:00;310;246;Il maestro e Margherita;Michail Bulgakov;precedente
+12:30;13:00;310;246;Siddharta;Hermann Hesse;precedente
+12:30;13:00;310;246;La coscienza di Zeno;Italo Svevo;precedente
+12:30;13:00;310;246;I dolori del giovane Werther;Johann Wolfgang von Goethe;precedente
