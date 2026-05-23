@@ -1,6 +1,7 @@
 import json
 import csv
 import time
+import os
 
 from request import Request
 import cor_plain
@@ -12,10 +13,13 @@ from matcher import Matcher
 from database_handler import DatabaseHandler
 from database import DataBase
 
-
-FILE_JSON = "time_slot.json"
-FILE_CSV_OUT_BASE = "risultati_cor_base.csv"
-FILE_CSV_OUT_INCR = "risultati_cor_incr.csv"
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(CURRENT_DIR)))
+FILE_JSON = os.path.join(CURRENT_DIR, "data", "time_slot.json")
+DIR_OUT_BASE = os.path.join(PROJECT_ROOT, "results", "DocumentResearch", "base_ttl")
+DIR_OUT_INCR = os.path.join(PROJECT_ROOT, "results", "DocumentResearch", "increased_ttl")
+FILE_CSV_OUT_BASE = os.path.join(DIR_OUT_BASE, "risultati_cor_base.csv")
+FILE_CSV_OUT_INCR = os.path.join(DIR_OUT_INCR, "risultati_cor_incr.csv")
 POTENZA_WATT_COR = 50.0
 BASE_BUDGETS = [0.000009, 0.0000142,0.000024,0.000034,0.0000435,0.000053,0.000063,0.000073]
 INCR_BUDGETS =[0.000024,0.000031,0.000038,0.000046,0.000053,0.000060,0.000067,0.000073]
@@ -121,6 +125,7 @@ def main_base():
                 risultati.append([doc_name, tipo_query, "CA", budget, co2_act, t_ca, em_ca, req_ca.n_filters,req_ca.filters, parole_ca,file_trovato_ca])
 
     # Salvataggio
+    os.makedirs(DIR_OUT_BASE, exist_ok=True)
     with open(FILE_CSV_OUT_BASE, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f, delimiter=";")
         writer.writerow(["Documento", "Tipo_query", "Versione", "Budget", "CI", "Tempo_s", "CO2_Emessa_g", "Numero_filtri","Filtri_applicati","Parole_trovate","File_corretto_trovato"])
@@ -205,6 +210,7 @@ def main_incr():
                 risultati.append([doc_name, tipo_query, "CA", budget, co2_act, t_ca, em_ca, req_ca.n_filters,req_ca.filters, parole_ca,file_trovato_ca])
 
     # Salvataggio
+    os.makedirs(DIR_OUT_INCR, exist_ok=True)
     with open(FILE_CSV_OUT_INCR, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f, delimiter=";")
         writer.writerow(["Documento", "Tipo_query", "Versione", "Budget", "CI", "Tempo_s", "CO2_Emessa_g", "Numero_filtri","Filtri_applicati","Parole_trovate","File_corretto_trovato"])

@@ -1,7 +1,6 @@
 from handler import Filter
 from request import Request
 import cv2
-import time
 
 class Resolution(Filter):
     _next_handler:Filter=None

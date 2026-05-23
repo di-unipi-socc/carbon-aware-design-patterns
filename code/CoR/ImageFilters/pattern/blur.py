@@ -3,7 +3,6 @@ from request import Request
 import cv2
 import numpy as np
 import mediapipe as mp
-import time
 
 class Blur(Filter):
     _next_handler:Filter=None

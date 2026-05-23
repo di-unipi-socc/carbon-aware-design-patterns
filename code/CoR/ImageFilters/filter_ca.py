@@ -1,7 +1,7 @@
-from resolution_ca import Resolution
-from saturation_ca import Saturation
-from blur_ca import Blur
-from relighting_ca import Relighting
+from pattern_ca.resolution_ca import Resolution
+from pattern_ca.saturation_ca import Saturation
+from pattern_ca.blur_ca import Blur
+from pattern_ca.relighting_ca import Relighting
 from request import Request
 
 

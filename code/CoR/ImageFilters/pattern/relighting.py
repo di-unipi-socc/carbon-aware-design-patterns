@@ -1,6 +1,5 @@
 from handler import Filter
 from request import Request
-import time
 import cv2
 import numpy as np
 import mediapipe as mp
