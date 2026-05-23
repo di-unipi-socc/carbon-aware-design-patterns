@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.lines as mlines
@@ -5,40 +6,29 @@ import seaborn as sns
 import numpy as np
 
 
-sns.set_theme(style="whitegrid")
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(CURRENT_DIR)))
 
+DIR_OUT = os.path.join(PROJECT_ROOT, "results", "DocumentResumer")
+FILE_CSV_IN = os.path.join(DIR_OUT, "risultati_resumer.csv")
 # ──────────────────────────────────────────────
-# FONT LATEX-COMPATIBILE
-# Per LaTeX completo (richiede LaTeX installato): decommentare text.usetex
-# Nota: con text.usetex=True usare r'\%' al posto di '%' nelle stringhe
-# ──────────────────────────────────────────────
+
+sns.set_theme(style="whitegrid")
 plt.rcParams.update({
-    # "text.usetex":  True,
     "font.family":  "serif",
     "font.serif":   ["Computer Modern Roman", "DejaVu Serif"],
     "mathtext.fontset": "cm",
 })
 
-PALETTE = {
-    "plain":   "#b24541",
-    "pattern": "#e16f0b",
-    "ca":      "#1a6498",
-}
-LABELS = {
-    "plain":   "Plain",
-    "pattern": "Pattern",
-    "ca":      "Pattern CA",
-}
+PALETTE = {"plain": "#b24541", "pattern": "#e16f0b", "ca": "#1a6498"}
+LABELS = {"plain": "Plain", "pattern": "Pattern", "ca": "Pattern CA"}
 THRESHOLDS = [150, 200, 250]
 VERSIONI   = ["plain", "pattern", "ca"]
 
-
-def carica_dati(path: str = "risultati_resumer.csv") -> pd.DataFrame:
+def carica_dati(path: str) -> pd.DataFrame:
     df = pd.read_csv(path, sep=";")
     df["time_slot"] = pd.Categorical(
-        df["time_slot"],
-        categories=sorted(df["time_slot"].unique()),
-        ordered=True,
+        df["time_slot"], categories=sorted(df["time_slot"].unique()), ordered=True
     )
     return df
 
@@ -110,10 +100,10 @@ def grafico1_ci_trend_generale(df: pd.DataFrame):
     ax.legend(handles=[leg_actual, leg_forecast], fontsize=8, loc="upper left")
 
     plt.tight_layout()
-    out = "1_resumer_ci_trend.pdf"
+    out = os.path.join(DIR_OUT, "1_resumer_ci_trend.pdf")
     plt.savefig(out, bbox_inches="tight")
     plt.close()
-    print(f" Salvato: {out}")
+    print(f" Salvato: {os.path.basename(out)}")
 
 # ──────────────────────────────────────────────
 # GRAFICO 1 — Andamento CI actual + forecast per time slot
@@ -197,10 +187,10 @@ def grafico1_ci_trend(df: pd.DataFrame):
                 fontsize=7, loc="upper left", ncol=2)
 
         plt.tight_layout()
-        out = f"1_resumer_ci_trend_th_{th}.pdf"
+        out = os.path.join(DIR_OUT, f"1_resumer_ci_trend_th_{th}.pdf")
         plt.savefig(out, bbox_inches="tight")
         plt.close()
-        print(f" Salvato: {out}")
+        print(f" Salvato: {os.path.basename(out)}")
 
 
 # ──────────────────────────────────────────────
@@ -253,10 +243,10 @@ def grafico2_risparmio_pct(df: pd.DataFrame):
                 right=df_dot["risparmio"].max() + 15)
 
     plt.tight_layout()
-    out = "2_resumer_risparmio_pct.pdf"
+    out = os.path.join(DIR_OUT, "2_resumer_risparmio_pct.pdf")
     plt.savefig(out, bbox_inches="tight")
     plt.close()
-    print(f" Salvato: {out}")
+    print(f" Salvato: {os.path.basename(out)}")
 
 
 # ──────────────────────────────────────────────
@@ -289,11 +279,10 @@ def grafico3_emissioni_per_slot(df: pd.DataFrame):
         plt.xticks(rotation=45, ha="right", fontsize=8)
         plt.tight_layout()
 
-        out = f"3_resumer_emissioni_slot_th_{th}.pdf"
+        out = os.path.join(DIR_OUT, f"3_resumer_emissioni_slot_th_{th}.pdf")
         plt.savefig(out, bbox_inches="tight")
         plt.close()
-        print(f" Salvato: {out}")
-
+        print(f" Salvato: {os.path.basename(out)}")
 
 # ──────────────────────────────────────────────
 # GRAFICO 4 — % richieste con riassunto restituito
@@ -336,13 +325,12 @@ def grafico4_pct_riassunti(df: pd.DataFrame):
         ax.set_ylabel("Richieste con Riassunto (%)", fontsize=9)
         plt.tight_layout()
 
-        out = f"4_resumer_pct_riassunti_th_{th}.pdf"
+        out = os.path.join(DIR_OUT, f"4_resumer_pct_riassunti_th_{th}.pdf")
         plt.savefig(out, bbox_inches="tight")
         plt.close()
-        print(f" Salvato: {out}")
+        print(f" Salvato: {os.path.basename(out)}")
 
-def grafico5_emissioni_totali_per_threshold(df: pd.DataFrame,
-                                            output: str = "5_resumer_emissioni_totali_th.pdf"):
+def grafico5_emissioni_totali_per_threshold(df: pd.DataFrame):
     totali = (
         df.groupby(["threshold", "versione"])["co2_emessa_g"]
         .sum()
@@ -378,15 +366,15 @@ def grafico5_emissioni_totali_per_threshold(df: pd.DataFrame,
     ax.legend(title="Versione", fontsize=8, title_fontsize=8)
     ax.set_ylim(0, totali["co2_emessa_g"].max() * 1.18)
     plt.tight_layout()
-    plt.savefig(output, bbox_inches="tight")
+    out = os.path.join(DIR_OUT, "5_resumer_emissioni_totali_th.pdf")
+    plt.savefig(out, bbox_inches="tight")
     plt.close()
-    print(f" Salvato: {output}")
+    print(f" Salvato: {os.path.basename(out)}")
 
 # ──────────────────────────────────────────────
 # GRAFICO 6 — Dual Axis: % Riassunti Restituiti vs % Risparmio CO2
 # ──────────────────────────────────────────────
-def grafico6_dual_axis_riassunti_risparmio(df: pd.DataFrame,
-                                        output: str = "6_resumer_dual_axis_riassunti_risparmio.pdf"):
+def grafico6_dual_axis_riassunti_risparmio(df: pd.DataFrame):
     dati_agg = []
     
     for th in THRESHOLDS:
@@ -457,22 +445,27 @@ def grafico6_dual_axis_riassunti_risparmio(df: pd.DataFrame,
     handles1, labels1 = ax1.get_legend_handles_labels()
     handles2, labels2 = ax2.get_legend_handles_labels()
     ax1.legend(handles1 + handles2, labels1 + labels2,
-               loc='upper right', framealpha=0.9, fontsize=7, ncol=2)
+            loc='upper right', framealpha=0.9, fontsize=7, ncol=2)
     
     plt.title("Confronto Riassunti restituiti e Threshold", fontsize=11)
     ax2.grid(False)
     
     plt.tight_layout()
-    plt.savefig(output, bbox_inches="tight")
+    out = os.path.join(DIR_OUT, "6_resumer_dual_axis_riassunti_risparmio.pdf")
+    plt.savefig(out, bbox_inches="tight")
     plt.close()
-    print(f" Salvato: {output}")
+    print(f" Salvato: {os.path.basename(out)}")
 
 # ──────────────────────────────────────────────
 # ENTRY POINT
 # ──────────────────────────────────────────────
-def genera_grafici_resumer(path: str = "risultati_resumer.csv"):
+def genera_grafici_resumer():
+    os.makedirs(DIR_OUT, exist_ok=True)
+    if not os.path.exists(FILE_CSV_IN):
+        print(f" [ERRORE] File '{FILE_CSV_IN}' non trovato. Esegui prima i test!")
+        return
     print("Lettura dei dati...")
-    df = carica_dati(path)
+    df = carica_dati(FILE_CSV_IN)
     print(f"   {len(df):,} righe caricate.\n")
     grafico1_ci_trend_generale(df)
     grafico1_ci_trend(df)
@@ -481,8 +474,7 @@ def genera_grafici_resumer(path: str = "risultati_resumer.csv"):
     grafico4_pct_riassunti(df)
     grafico5_emissioni_totali_per_threshold(df)
     grafico6_dual_axis_riassunti_risparmio(df)
-    print("\n Tutti i grafici generati con successo!")
-
+    print("\n Tutti i grafici generati con successo nei rispettivi percorsi!")
 
 if __name__ == "__main__":
     genera_grafici_resumer()

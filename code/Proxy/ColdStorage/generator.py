@@ -2,21 +2,26 @@ import time
 import csv
 import datetime
 import random
-import threading
+import os
 
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(CURRENT_DIR, "data")
+DB_FILE = os.path.join(DATA_DIR, "database.csv")
 
 def generator():
+    os.makedirs(DATA_DIR, exist_ok=True)
+    
     while True:
         time.sleep(1)
         temp_door=generate_temp_port()
         temp_bot=generate_temp_fond(temp_door)
         um=generate_um(temp_door)
         cons=generate_cons(temp_door)
-        with open('database.csv', mode='a', newline='') as database:
+        with open(DB_FILE, mode='a', newline='') as database:
             datawriter = csv.writer(database, delimiter=';')
             timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             datawriter.writerow([timestamp, temp_door, temp_bot, um, cons])
-
 
 def generate_temp_port():
     prob= random.random()
@@ -53,7 +58,6 @@ def generate_cons(td):
     if prob < 0.02:
         cons = round(random.uniform(4.5,6.5),2)
     return cons
-
 
 if __name__ == "__main__":
     generator()

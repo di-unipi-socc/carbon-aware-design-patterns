@@ -5,7 +5,7 @@ import os
 
 from coldstorage_realservice import ColdStorage_RealService
 from plain import Plain
-from cache_proxy import Cache_Proxy
+from coldstorage_pattern import Cache_Proxy
 from coldstorage_ca import ColdStorage_ca
 from carbonprovider import CarbonProvider
 
@@ -16,12 +16,17 @@ N_ITERAZIONI   = 1
 POTENZA_WATT   = 50.0
 
 THRESHOLDS     = [150.0, 200.0, 250.0]
-TTLS           = [0.06,0.07,0.08,0.09,0.1,0.15]#0.06,0.07,0.08,0.09,0.1,0.15
+TTLS           = [0.06,0.07,0.08,0.09,0.1,0.15]
 
-DB_FILEPATH        = "database.csv"
-WORKLOAD_FILEPATH  = "workload_cella.csv"
-TIMESLOT_FILEPATH  = "time_slot.json"
-TEMP_DB_PATH       = "_temp_slot_db.csv"
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(CURRENT_DIR)))
+DATA_DIR = os.path.join(CURRENT_DIR, "data")
+DIR_OUT = os.path.join(PROJECT_ROOT, "results", "ColdStorage")
+DB_FILEPATH        = os.path.join(DATA_DIR, "database.csv")
+WORKLOAD_FILEPATH  = os.path.join(DATA_DIR, "workload_cella.csv")
+TIMESLOT_FILEPATH  = os.path.join(DATA_DIR, "time_slot.json")
+TEMP_DB_PATH       = os.path.join(CURRENT_DIR, "_temp_slot_db.csv")
+FILE_CSV_OUT       = os.path.join(DIR_OUT, "risultati_test.csv")
 
 
 SLOT_SIZE = 70_000
@@ -148,12 +153,9 @@ def esegui_slot(versione: str, workload: list,
 
 # ──────────────────────────────────────────────
 # MAIN
-# ──────────────────────────────────────────────
-time_slots          = carica_time_slots(TIMESLOT_FILEPATH)
-workload            = carica_workload(WORKLOAD_FILEPATH)
-db_header, db_righe = carica_database(DB_FILEPATH)
 def main():
-
+    os.makedirs(DIR_OUT, exist_ok=True) # Crea la cartella results/ColdStorage se non esiste
+    
     versioni   = ["plain", "pattern", "pattern_ca"]
     fieldnames = [
         "versione", "time_slot", "numero_richiesta","ci",
@@ -164,8 +166,7 @@ def main():
 
     righe_per_file = len(versioni) * len(time_slots) * N_ITERAZIONI * len(workload)
 
-    file_csv = f"risultati_test.csv"
-    with open(file_csv, "w", newline="") as fout:
+    with open(FILE_CSV_OUT, "w", newline="") as fout:
         writer = csv.DictWriter(fout, fieldnames=fieldnames, delimiter=";")
         writer.writeheader()
         for threshold in THRESHOLDS:
@@ -173,7 +174,7 @@ def main():
 
                 print(f"\n{'='*54}")
                 print(f"  TEST SUITE — TH={threshold} | TTL={ttl}")
-                print(f"  Output: '{file_csv}'  ({righe_per_file:,} righe attese)")
+                print(f"  Output: '{FILE_CSV_OUT}'  ({righe_per_file:,} righe attese)")
                 print(f"{'='*54}")
 
                 for versione in versioni:
@@ -188,13 +189,16 @@ def main():
                             **riga,
                         })
 
-                print(f"\n  Salvato: '{file_csv}'")
+                print(f"\n  Salvato: '{FILE_CSV_OUT}'")
 
     if os.path.exists(TEMP_DB_PATH):
         os.remove(TEMP_DB_PATH)
 
     print("\nTutti i test completati.")
 
-
 if __name__ == "__main__":
+    # Caricamento Globale
+    time_slots          = carica_time_slots(TIMESLOT_FILEPATH)
+    workload            = carica_workload(WORKLOAD_FILEPATH)
+    db_header, db_righe = carica_database(DB_FILEPATH)
     main()

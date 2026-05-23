@@ -1,12 +1,19 @@
 import csv
 import random
 import os
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(CURRENT_DIR, "data")
+FILE_WORKLOAD = os.path.join(DATA_DIR, "workload_cella.csv")
+
 NUM_RICHIESTE = 200
-FILE_WORKLOAD = "workload_cella.csv"
 
 def genera_workload():
+    os.makedirs(DATA_DIR, exist_ok=True)
+    
     if os.path.exists(FILE_WORKLOAD):
         return
+        
     sensori = ["TD", "TB", "UM", "CO"]
     tipi_operazione = ["correlazione", "anomalia"]
 

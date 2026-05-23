@@ -2,22 +2,27 @@ import csv
 import json
 import os
 
-BOOKS_FILE    = "lista_libri.csv"
-TIMESLOT_FILE = "time_slot.json"
-OUTPUT_FILE   = "workload_libri.csv"
+# --- CONFIGURAZIONE PERCORSI ASSOLUTI ---
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(CURRENT_DIR, "data")
 
+BOOKS_FILE    = os.path.join(DATA_DIR, "lista_libri.csv")
+TIMESLOT_FILE = os.path.join(DATA_DIR, "time_slot.json")
+OUTPUT_FILE   = os.path.join(DATA_DIR, "workload_libri.csv")
+# ----------------------------------------
 
 def genera_workload():
+    os.makedirs(DATA_DIR, exist_ok=True)
+
     if os.path.exists(OUTPUT_FILE):
         print(f"⚠️  '{OUTPUT_FILE}' esiste già. Eliminalo per rigenerarlo.")
         return
 
-
     with open(BOOKS_FILE, newline="", encoding="utf-8") as f:
         libri = list(csv.DictReader(f, delimiter=";"))
-        print(len(libri))
+        print(f"Libri caricati: {len(libri)}")
+    
     gruppi = [libri[i:i+5] for i in range(0, len(libri), 5)]
-
 
     with open(TIMESLOT_FILE, encoding="utf-8") as f:
         slots = json.load(f)["data"]
@@ -29,7 +34,6 @@ def genera_workload():
         )
 
     # ── Costruzione righe del workload ─────────────────────────────────────
-
     righe = []
     for idx, slot in enumerate(slots):
         slot_from   = slot["from"]
@@ -79,7 +83,6 @@ def genera_workload():
         tot = len(correnti) + len(precedenti)
         print(f"   {slot['from']}: {tot} richieste → correnti={correnti}"
             + (f" | precedenti={precedenti}" if precedenti else ""))
-
 
 if __name__ == "__main__":
     genera_workload()

@@ -1,4 +1,4 @@
-from document import Document
+from document_resume import Document_resume
 from resumer import Resumer
 from transformers import pipeline
 import transformers
@@ -13,7 +13,7 @@ class Resumer_RealService(Resumer):
             device_map="auto"
         )
         
-    def resume(self,doc:Document) -> str:
+    def resume(self,doc:Document_resume) -> str:
 
         messages = [
             {
