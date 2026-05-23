@@ -1,5 +1,5 @@
 from resumer import Resumer
-from document_resume import Document_resume
+from doc_resume import Document_resume
 
 class ProxyResumer(Resumer):
     def __init__(self, real_resumer: Resumer):

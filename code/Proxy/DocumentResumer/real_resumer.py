@@ -1,4 +1,4 @@
-from document_resume import Document_resume
+from doc_resume import Document_resume
 from resumer import Resumer
 from transformers import pipeline
 import transformers

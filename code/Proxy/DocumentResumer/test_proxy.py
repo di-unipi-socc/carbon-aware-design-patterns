@@ -3,7 +3,7 @@ import time
 import datetime
 import os
 
-from document_resume import Document_resume
+from doc_resume import Document_resume
 from real_resumer import Resumer_RealService
 from plain_resumer import ProxyResumer as PlainResumer
 from proxy_resumer_pattern import ProxyResumer as PatternResumer

@@ -1,6 +1,6 @@
 import datetime
 from resumer import Resumer
-from document_resume import Document_resume
+from doc_resume import Document_resume
 from carbonprovider import CarbonProvider
 
 class Resumer_CarbonAware(Resumer):

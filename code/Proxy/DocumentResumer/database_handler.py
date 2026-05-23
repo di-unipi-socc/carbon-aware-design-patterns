@@ -1,7 +1,7 @@
 import os
 from database import DataBase
 from resumer import Resumer
-from document_resume import Document_resume
+from doc_resume import Document_resume
 
 
 class DatabaseHandler:
