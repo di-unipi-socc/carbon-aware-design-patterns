@@ -32,11 +32,12 @@ def main():
     provider.set_co2(args.co2)
     
     print("Applicazione filtri in corso...")
-    processedimage = filter_ca(req, args.co2, None)
+    processedimage = filter_ca(req, args.co2, 0.8)
+    print(type(processedimage))
     
-    if processedimage is not None:
+    if processedimage.image is not None:
         out_path = os.path.join(OUTPUT_DIR, f"processed_{immagine_file}")
-        cv2.imwrite(out_path, processedimage)
+        cv2.imwrite(out_path, processedimage.image)
         print(f"Filtri applicati! Immagine salvata in: {out_path}")
     else:
         print("Impossibile elaborare l'immagine.")
